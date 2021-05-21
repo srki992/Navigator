@@ -1,0 +1,155 @@
+﻿<Window x:Class="Navigator.Views.HomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Navigator.Views"
+        mc:Ignorable="d"
+        Title="Navigator" Height="Auto" Width="Auto"
+        Topmost="True" WindowStartupLocation="CenterScreen" Background="DarkCyan">
+    <Grid Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="80" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Podaci o kandidatima"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="4"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="5,8"
+                   Padding="3"                   
+                   />
+        <TextBlock Name="txtBlockMessage"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="4"
+                   FontSize="15"
+                   FontWeight="Normal"
+                   HorizontalAlignment="Center"
+                   Margin="5,8"
+                   Padding="3"
+                   Text="{Binding Path=Message}"
+                   />
+        <Button Name="btnExport"
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Width="70"
+                    Content="Export"
+                    Margin="5,8"
+                    Padding="3"
+                Click="btnExport_Click"
+                />
+        <!--<Button Name="btnOsvezi"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Width="70"
+                    Content="Osvezi"
+                    Margin="5,8"
+                    Padding="3"
+                    Command="{Binding Path=OsveziCommand}"
+                />-->
+        <TextBox Name="txtSearchUnos"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2"
+                 Margin="5,8"
+                 Padding="3"
+                 Width="150"
+                 Height="30"
+                 HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                 Text="{Binding Path=txtSearchUnos, Mode=TwoWay}" />
+        <Button Name="btnSearch"
+                    Content="Pretraga"
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    Width="70"
+                    Height="30"
+                    Margin="5,8"
+                    Padding="3"
+                    Command="{Binding Path=SearchCommand}" />
+
+        <DataGrid Name="dgKandidati"
+                  AutoGenerateColumns="False"
+                  Grid.Row="2"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="4"
+                  Margin="5,8"
+                  Padding="3"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding Path=ListaKandidata, Mode=TwoWay}">
+            <DataGrid.Columns>
+                <!--<DataGridTextColumn Header="Korisnik Id"
+                                    Width="auto"
+                                    Binding="{Binding Path=id}" />-->
+                <DataGridTextColumn Header="Ime"
+                                    Width="*"
+                                    Binding="{Binding Path=ime}" />
+                <DataGridTextColumn Header="Prezime"
+                                    Width="*"
+                                    Binding="{Binding Path=prezime}" />
+                <DataGridTextColumn Header="Ime"
+                                    Width="*"
+                                    Binding="{Binding Path=ime}" />
+                <DataGridTextColumn Header="JMBG"
+                                    Width="*"
+                                    Binding="{Binding Path=jmbg}" />
+                <DataGridTextColumn Header="God.rodjenja"
+                                    Width="*"
+                                    Binding="{Binding Path=god_rodjenja}" />
+                <DataGridTextColumn Header="Email"
+                                    Width="*"
+                                    Binding="{Binding Path=email}" />
+                <DataGridTextColumn Header="Telefon"
+                                    Width="*"
+                                    Binding="{Binding Path=telefon}" />
+                <DataGridTextColumn Header="Napomena"
+                                    Width="*"
+                                    Binding="{Binding Path=napomena}" />
+                <DataGridTextColumn Header="Zap.nak.konk."
+                                    Width="*"
+                                    Binding="{Binding Path=zaposlen_nakon_konkursa}" />
+                <DataGridTextColumn Header="Datum izmene"
+                                    Width="*"
+                                    Binding="{Binding Path=datum_izmene}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Name="btnAdd"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Width="70"
+                    Content="Dodaj"
+                    Margin="5,8"
+                    Padding="3"
+                    Command="{Binding Path=InsertCommand}" />
+        <Button Name="btnUpdate"
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    Width="70"
+                    Content="Izmeni"
+                    Margin="5,8"
+                    Padding="3"
+                    Command="{Binding Path=UpdateCommand}" />
+        <Button Name="btnDelete"
+                    Grid.Row="3"
+                    Grid.Column="3"
+                    Width="70"
+                    Content="Obrisi"
+                    Margin="5,8"
+                    Padding="3"
+                    Command="{Binding Path=DeleteCommand}" />
+
+    </Grid>
+</Window>
